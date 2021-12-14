@@ -18,7 +18,7 @@ describe("choose Camaro Vehicle (2016-2022)", () => {
         })
     })
 
-    context('choose Camaro Vehicle (2016-2022)', () => {
+    context('Choose Camaro Vehicle (2016-2022)', () => {
         it('Verify User Redirect to home page', () => {
             cy.url('https://www.americanmuscle.com/')
         });
@@ -33,6 +33,10 @@ describe("choose Camaro Vehicle (2016-2022)", () => {
             homePage.actions.clickcameroTab20162020()
             homePage.tests.checkclickOnCameroTab20162020()
         });
+        it('Verify placeholder of Search input contain 16-22 Camaro Parts', () => {
+            homePage.tests.checkPlaceholderOfSearchInput()
+        });
     })
+  
 
 })

@@ -21,4 +21,7 @@ export class HomePageTestss {
         this.items.shopCamaroDefultTab()
         .should('not.have.class', 'hidden').and('contain','Camaro')
     }
+    checkPlaceholderOfSearchInput(){
+        this.items.searchInput().invoke('attr', 'placeholder').should('contain', "Search '16-'22 Camaro Parts")
+    }
 }

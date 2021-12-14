@@ -15,4 +15,7 @@ export class HomePageItems {
     shopCamaroDefultTab() {
         return cy.get('li[data-vfw-vehicletype="camaro"]');
     }
+    searchInput(){
+        return cy.get('input[id="keywords"]');
+    }
 }
