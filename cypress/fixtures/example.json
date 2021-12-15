@@ -1,4 +1,7 @@
 {
   "ShopCameroTabURL":"https://www.americanmuscle.com/#camaro",
-  "CameroTab20162020URL":"https://www.americanmuscle.com/2016-camaro-accessories-parts.html"
+  "CameroTab20162020URL":"https://www.americanmuscle.com/2016-camaro-accessories-parts.html",
+  "CamaroRotorsURL":"https://www.americanmuscle.com/2016-camaro-rotors.html",
+  "minPrice":"120",
+  "maxPrice":"290"
 }
