@@ -10,9 +10,9 @@ export class RotorsPageItems {
     rotersFromBreaksTab(){
         return cy.get('a[title="2016-2021 Camaro Rotors"]');
     }
-    breadCrumb()
+    breadCrumbOfCameroRotors()
     {
-        return cy.get('section[data-type="drilldown"]> div> ul');
+        return cy.get('.gen_category_content > :nth-child(1) > :nth-child(6) strong');
     }
     headerOfRotorPage(){
         return cy.get('.gen_category_header');

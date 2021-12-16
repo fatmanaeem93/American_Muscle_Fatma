@@ -65,7 +65,7 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
             breakesRotorPage.actions.hiddenMarketingModelByClicking()
             breakesRotorPage.tests.VerifyHiddenMarketingModel()
         });
-        it('check breadCrump of Camaro Roter in Camaro Roter page', () => {
+        it('check breadCrump of Camaro Roter 2016-2022 in Camaro Roter page', () => {
             breakesRotorPage.tests.CheckingBreadCrump()
         });
         it('Verify Header of camero rotor page', () => {
