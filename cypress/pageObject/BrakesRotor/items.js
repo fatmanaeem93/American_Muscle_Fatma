@@ -15,7 +15,7 @@ export class RotorsPageItems {
         return cy.get('section[data-type="drilldown"]> div> ul');
     }
     headerOfRotorPage(){
-        return cy.get('.generation_years_text');
+        return cy.get('.gen_category_header');
     }
     sequanceOfYear()
     {
