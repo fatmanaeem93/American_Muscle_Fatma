@@ -116,4 +116,59 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
 
         });
     })
+    context('product details page and navigate to product saved later',()=>{
+        it('Verify Navigate to product detail page with the highest customer rating', () => {
+           productPageItems.productName().then((el)=>{
+                cy.wrap(el.text()).as('product_name')
+            })
+            productPageItems.fitment().then((el)=>{
+                cy.wrap(el.text()).as('fitment')
+            })
+            productPageItems.productPrice().then((el)=>{
+                cy.wrap(el.text()).as('price')
+            })
+            productPageItems.numberOfReview().then((el)=>{
+                cy.wrap(el.text()).as('number_of_review')
+            })
+            productPageItems.productWithHighestCustomerReview().should('have.attr','data-position','0').click()
+            cy.url('https://www.americanmuscle.com/power-stop-camaro-evolution-coated-rotor-front-ar82187evc.html')
+            
+         });
+        it('Verify header of product detail match the same clicked product', () => {
+            productPageItems.productNameOfProductPage().should('contain',this.productName)
+        });
+        it('Verify fitment of product detail match same clicked product', () => {
+           productPageItems.productFitmentOfProductPage().should('contain',this.fitment)
+        });
+        it('Verify price of product detail match same clicked product', () => {
+            productPageItems.priceAmountOfProductPage().should('contain',this.price)
+        });
+        it('Verify number of review of product detail match same clicked product', () => {
+            productPageItems.numberOfReviewOfProductPage().should('contain',this.number_of_review)
+        });
+        it('Verify clicking on save for later button', () => {
+            productPageItems.saveForLaterButton().click()
+            productPageItems.saveForLaterLoginCard().should('not.have.class','hidden')
+        });
+        it('Verify Typing email to save product', () => {
+            productPageItems.emailInput()
+            .type('fatma@test.com').should("have.value","fatma@test.com")
+        });
+        it('Verify clicking on enter button', () => {
+            productPageItems.enterButtonOfSaveLaterCard().click()
+            productPageItems.savedText().should('be.visible')
+            productPageItems.orderQuantity().then((el)=>{
+                cy.wrap(el.text()).as('orderQuanitity')
+            })
+        });
+        it('Verify clicking on saved product choice from my account list', () => {
+            productPageItems.myAccount().realHover()
+            productPageItems.myAccountMenu().should('have.class','open')
+            productPageItems.prodsavedProductFromMyAccountMenu().click()
+            cy.get('@data').then((data)=>{
+                cy.url(data.savedForLaterURL)
+            })
+        });
+    
+    })
 })
