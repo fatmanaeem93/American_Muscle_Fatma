@@ -37,9 +37,9 @@ export class RotorsPageTests {
     }
     VerifyClickingonbrakeRotorsAndDrumsCategoryFilter() {
         this.items.brakeRotorsAndDrumsCategoryFilter().should('have.class', 'facet selected')
+        this.items.loading().should('be.visible')
         cy.url('https://www.americanmuscle.com/2016-camaro-rotors.html/f/?Subcategory=Brake%20Rotors%20and%20Drums')
         this.items.brakeRoterAndDrumbTabFilter().should('have.text', 'Brake Rotors and Drums')
-        this.items.loading().should('be.visible')
     }
     VerifyTheResultCategoryTotalAfterFilter() {
         this.items.NumberOfbrakeRotorsAndDrumsCategoryFilter().then((el) => {

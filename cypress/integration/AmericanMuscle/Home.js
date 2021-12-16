@@ -75,6 +75,7 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
             breakesRotorPage.tests.checkTheSequenceOfYear()
         });
         it('Verify clicking on category filter', () => {
+            breakesRotorPage.actions.clickOnBrakeRotorsAndDrumsCategoryFilter()
             breakesRotorPage.tests.VerifyClickingonbrakeRotorsAndDrumsCategoryFilter()
         });
         it('Verify the total result category after filter', () => {
