@@ -76,6 +76,13 @@ export class RotorsPageTests {
         cy.wait(1000)
         this.items.PriceTabFilter().should("be.visible")
     }
+    VerifyProductSorted() {
+        this.items.allPriceItem().then(ele => {
+            const unsortedItems = ele.map((index, el) => Cypress.$(el).text().substr(1).trim().replace(/,/g, '')).get();
+            const sortedItems = unsortedItems.slice().sort((a, b) => parseFloat(b) - parseFloat(a));
+            expect(sortedItems, 'Items are sorted').to.deep.equal(unsortedItems);
+        });
+    }
     VerifySortSelect() {
         this.items.SortSelect().should('be.visible')
         this.items.featuredSelection().should('have.attr', 'selected')

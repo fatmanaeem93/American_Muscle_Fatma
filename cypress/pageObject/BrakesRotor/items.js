@@ -60,7 +60,10 @@ export class RotorsPageItems {
         return cy.get("button[class='limit_price']");
     }
     PriceTabFilter(){
-        cy.get('p[data-group-id="RetailPrice"]')
+        return cy.get('p[data-group-id="RetailPrice"]');
+    }
+    allPriceItem(){
+        return cy.get('p[data-qatgt="price"]');
     }
     SortSelect(){
         return cy.get('select[name="sort"]');
