@@ -25,7 +25,7 @@ export class RotorsPageTests {
         this.items.marktingModal().should('be.visible')
     }
     VerifyHiddenMarketingModel(){
-        marktingModal().should('not.be.visible')
+        this.items.marktingModal().should('not.be.visible')
     }
     CheckingBreadCrump(){
         console.log((this.items.breadCrumb().children()).length)

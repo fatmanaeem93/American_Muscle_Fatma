@@ -57,8 +57,11 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
             breakesRotorPage.actions.clickOnRotersFromBreaksTab()
             breakesRotorPage.tests.VerifyClickingOnRotersFromBreaksTab()
         });
-        it('Verify hidden Markiting modal', () => {
+        it('Verify action modal is visible', () => {
+            breakesRotorPage.actions.showMarketingModel()
             breakesRotorPage.tests.VerifyMarketingModelVisible()
+        });
+        it('Verify hidden Markiting modal', () => {
             breakesRotorPage.actions.hiddenMarketingModelByClicking()
             breakesRotorPage.tests.VerifyHiddenMarketingModel()
         });

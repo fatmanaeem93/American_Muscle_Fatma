@@ -77,7 +77,10 @@ export class RotorsPageItems {
     loading(){
         return cy.get('div[class="spinner"]')
     }
-
-
-
+    NoThanksLink(){
+        return cy.get('.progress_container > .text_link')
+    }
+    marketingModalPOPUP(){
+        return cy.get('[data-valid-for-display="True"]')
+    }
 }

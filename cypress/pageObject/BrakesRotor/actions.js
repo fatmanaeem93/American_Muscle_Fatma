@@ -37,6 +37,9 @@ export class RotorsPageActions {
         this.items.SortSelect().select('Customer Rating',{force:true})
     }
     hiddenMarketingModelByClicking(){
-        this.items.cy.get('.progress_container > .text_link').click()
+        this.items.NoThanksLink().click()
+    }
+    showMarketingModel(){
+        this.items.marketingModalPOPUP().invoke('show')
     }
 }
