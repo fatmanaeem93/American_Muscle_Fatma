@@ -12,6 +12,9 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
     let fitment=""
     let price=""
     let number_of_review=""
+    let orderQuanitity=""
+    let neworderQuanitity=""
+    let cost=""
     before(() => {
         homePage.actions.visitHomePage()
     });
@@ -166,13 +169,85 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
             })
         });
         it('Verify clicking on saved product choice from my account list', () => {
-            productPageItems.myAccount().realHover()
-            productPageItems.myAccountMenu().should('have.class','open')
-            productPageItems.savedProductFromMyAccountMenu().click()
+            productPageItems.myAccountMenu().invoke('show',{timeout:1000})
+            //productPageItems.myAccountMenu().should('have.class','open')
+            productPageItems.savedProductFromMyAccountMenu().click({force:true},{timeout:100})
             cy.get('@data').then((data)=>{
                 cy.url(data.savedForLaterURL)
             })
         });
     
     })
+    context('saved product for later and at to cart',()=>{
+        it('Verify Bread Crump cantain saved for later selected', () => {
+            savedProductAndAddToCartItems.breadCrumpSavedForLater().should('not.have.class','text_link')
+        });
+        it('Verify title of product detail match same clicked product', () => {
+            savedProductAndAddToCartItems.flitmentOfProduct().should('contain',product_name)
+        });
+        it('Verify fitment of product detail match same clicked product', () => {
+            savedProductAndAddToCartItems.flitmentOfProduct().should('contain',fitment)
+        });
+        it('Verify price of product detail match same clicked product', () => {
+            savedProductAndAddToCartItems.priceOfProduct().should('contain',price)
+        });
+        it('Verify number of review of product detail match same clicked product', () => {
+            savedProductAndAddToCartItems.numberOfReview().should('contain',number_of_review)
+        });
+        it('Verify saved products menu contain the same order quantity of item', () => {
+            savedProductAndAddToCartItems.numberOfItemInProductsMenu().should('contain',orderQuanitity)
+        });
+        it('Verify clicking on add to cart button', () => {
+            cy.waitUntil(  () =>   savedProductAndAddToCartItems.addToCartButton() ).click({ multiple: true } )
+            // savedProductAndAddToCartItems.loading().should('be.visible')
+            cy.get('@data').then((data)=>{
+                cy.url(data.shoppingCartURL)
+            })
+            savedProductAndAddToCartItems.cartHeader().should('contain','Your Cart')
+        });
+        it('Verify all deatils info of product in shooping cart', () => {
+            savedProductAndAddToCartItems.cost().should('contain',price)
+            savedProductAndAddToCartItems.unitPrice().should('contain',price)
+            savedProductAndAddToCartItems.subTotal().should('contain',price)
+            savedProductAndAddToCartItems.productName().should('contain',product_name)
+        });
+        it('Verify hovering on quantity selection', () => {
+            savedProductAndAddToCartItems.quantitySelect().first().realHover({timeout:1000}).should('have.css','border','2px solid rgb(24, 145, 205)')
+        });
+        it('Verify quantity defualt is 1', () => {
+            savedProductAndAddToCartItems.quantitySelectionDefult().first().should('have.text','1')
+        });
+        it('Verify shopping count and quantity have the same value of defult order quantity', () => {
+            savedProductAndAddToCartItems.shoppingCount().should('contain',orderQuanitity)
+            savedProductAndAddToCartItems.quantityOfShoppingCount().should('contain',orderQuanitity)
+        });
+        it('Verify select 11 item of product', () => {
+            savedProductAndAddToCartItems.quantitySelect().click()
+            savedProductAndAddToCartItems.quantityOfSelectionValue11().click().then((el)=>{
+                cy.wrap(el.text()).as('neworderQuanitity')
+            })
+        });
+            it('check Cost of 11 unit according to unit price', () => {
+            // cost = (neworderQuanitity.replace('$',''))*(price.replace('$',''))
+            cy.get('@data').then((data)=>{
+                price=data.unitPrice
+                orderQuanitity=data.quantity
+                cost=price*orderQuanitity
+                savedProductAndAddToCartItems.cost().should('contain',cost)
+            })
+        });
+            it('check sub total summery of 11 unit according to unit price', () => {
+                cy.get('@data').then((data)=>{
+                    price=data.unitPrice
+                    orderQuanitity=data.quantity
+                    cost=price*orderQuanitity
+                    savedProductAndAddToCartItems.cost().should('contain',cost)
+                })
+        });
+        it('Verify shipping counter and quantity of it is match the value of unit selected', () => {
+            savedProductAndAddToCartItems.shoppingCount().should('contain',neworderQuanitity)
+            savedProductAndAddToCartItems.quantityOfShoppingCount().should('contain',neworderQuanitity)
+        });
+        
+        })
 })

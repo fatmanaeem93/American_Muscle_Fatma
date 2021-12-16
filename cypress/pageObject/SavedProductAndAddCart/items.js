@@ -9,14 +9,17 @@ flitmentOfProduct(){
 priceOfProduct(){
      return  cy.get('.products_container .price');
 }
+productName(){
+     return cy.get('.product_name > a')
+}
 numberOfReview(){
     return cy.get('.products_container .reviews-number')
 }
 numberOfItemInProductsMenu(){
-    return cy.get('li[data-buildlist-id="731536"] p');
+    return cy.get('.build_list p');
 }
 addToCartButton(){
-    return cy.get('a[data-saved-list-id="731536"]');
+    return cy.get('a[title="Add to Shopping Cart"]');
 }
 cartHeader(){
    return cy.get('#page .page_header');
@@ -31,10 +34,10 @@ subTotal(){
     return cy.get('span[data-key="SubTotal"]');
 }
 quantitySelectionDefult(){
-    return cy.get('.dropup span:first-child');
+    return cy.get('.dropdown-text');
 }
 quantitySelect(){
-    return cy.get('.dropup')
+    return cy.get('.quantity button')
 }
 shoppingCount(){
     return cy.get('a[href="/shopping-cart.html"] span  .cart_count');
@@ -44,6 +47,9 @@ quantityOfShoppingCount(){
 }
 quantityOfSelectionValue11(){
     return cy.get('li[data-value="11"]');
+}
+loading(){
+    return cy.get('div[class="spinner"]')
 }
 
 
