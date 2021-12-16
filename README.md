@@ -4,7 +4,7 @@ This repo will allow you to check if the functionallity of Amirican Muscle site 
 
 Also there some of the assertion to check the style like the hover
 
-* Dependencies used
+* Dependencies used:
    1-Cypress
    2-Cypress real events
    3-waituntil
@@ -23,10 +23,15 @@ Also there some of the assertion to check the style like the hover
 *  Test cases covered by this app
 
    Verify User Redirect to home page
+   
    Verify Generation Select Nav Visible
+   
    Verify clicking on Shop Camero Tab
+   
    Verify clicking on Camero Tab 2016_2020
+   
    Verify placeholder of Search input contain 16-22 Camaro Parts
+   
    Verify shopping count equal 0
    .
    .
