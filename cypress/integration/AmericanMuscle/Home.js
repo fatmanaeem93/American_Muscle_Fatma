@@ -48,6 +48,9 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
         it('Verify placeholder of Search input contain 16-22 Camaro Parts', () => {
             homePage.tests.checkPlaceholderOfSearchInput()
         });
+        it('Verify shopping count equal 0', () => {
+            savedProductAndAddToCartItems.shoppingCount().should('contain',"0")
+        });
     })
     context('Navigate to Brakes/Rotor category', () => {
         it('Verify hovering on brakes nav', () => {
@@ -252,5 +255,5 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
     after(() => {
         cy.clearCookies();
         cy.clearLocalStorage();
-      })
+    })
 })
