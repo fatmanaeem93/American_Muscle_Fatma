@@ -7,10 +7,10 @@ export class RotorsPageTests {
 
     checkHoverOnbreaksTab()
     {
-        this.items.breaksTab().should('have.css','color','rgb(70, 77, 85)')
+        this.items.breaksTab().should('have.css','color','rgb(24, 145, 205)')
     }
     checkbrowsCategoriesInBrakesVisible(){
-        this.items.browsCategoriesInBrakes().should('have.style','display: block;')
+        this.items.browsCategoriesInBrakes().should('have.attr','style','display: block;')
     }
     VerifyHoverOnRotersFromBreaksTab(){
         this.items.rotersFromBreaksTab().should('have.css','color','rgb(24, 145, 205)')
@@ -19,6 +19,13 @@ export class RotorsPageTests {
         cy.get('@data').then((data)=>{
             cy.url(data.CamaroRotorsURL)
            })
+    }
+    VerifyMarketingModelVisible(){
+        cy.wait(1000)
+        this.items.marktingModal().should('be.visible')
+    }
+    VerifyHiddenMarketingModel(){
+        marktingModal().should('not.be.visible')
     }
     CheckingBreadCrump(){
         console.log((this.items.breadCrumb().children()).length)
@@ -41,6 +48,7 @@ export class RotorsPageTests {
         this.items.brakeRotorsAndDrumsCategoryFilter().should('have.class','facet selected')
         cy.url('https://www.americanmuscle.com/2016-camaro-rotors.html/f/?Subcategory=Brake%20Rotors%20and%20Drums')
         this.items.brakeRoterAndDrumbTabFilter().should('have.text','Brake Rotors and Drums')
+         this.items. loading().should('be.visible')
     }
     VerifyTheResultCategoryTotalAfterFilter(){
         this.items.NumberOfbrakeRotorsAndDrumsCategoryFilter().then((el)=>{

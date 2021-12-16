@@ -7,12 +7,13 @@ export class RotorsPageActions {
     }
 
     HoverOnbreaksTab(){
-        this.items.breaksTab().realHover()
+        this.items.breaksTab().realHover({force:true})
     }
     hoverOnRotersFromBreaksTab(){
         this.items.rotersFromBreaksTab().realHover()
     }
     clickOnRotersFromBreaksTab(){
+        
         this.items.rotersFromBreaksTab().click()
     }
     clickOnBrakeRotorsAndDrumsCategoryFilter()
@@ -34,5 +35,8 @@ export class RotorsPageActions {
     }
     selectCustomerRating(){
         this.items.SortSelect().select('Customer Rating',{force:true})
+    }
+    hiddenMarketingModelByClicking(){
+        this.items.cy.get('.progress_container > .text_link').click()
     }
 }

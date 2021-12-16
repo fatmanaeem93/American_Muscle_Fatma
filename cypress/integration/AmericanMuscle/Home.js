@@ -1,9 +1,13 @@
 /// <reference types="cypress" />
 import { HomePage } from "../../pageObject/HomePage/page"
 import { RotorsPage } from "../../pageObject/BrakesRotor/page"
-describe("choose Camaro Vehicle (2016-2022)", () => {
+import { ProductPageItems } from "../../pageObject/productPage/items"
+import { SavedProductAndAddToCartItems } from "../../pageObject/SavedProductAndAddCart/items"
+describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
     let homePage = new HomePage()
     let breakesRotorPage = new RotorsPage()
+    let productPageItems = new ProductPageItems()
+    let savedProductAndAddToCartItems = new SavedProductAndAddToCartItems()
     before(() => {
         homePage.actions.visitHomePage()
     });
@@ -14,8 +18,8 @@ describe("choose Camaro Vehicle (2016-2022)", () => {
                 return true;
             }
         });
-        cy.fixture('./example').then((data)=>{
-        cy.wrap(data).as('data')
+        cy.fixture('./example').then((data) => {
+            cy.wrap(data).as('data')
         })
     })
 
@@ -38,7 +42,7 @@ describe("choose Camaro Vehicle (2016-2022)", () => {
             homePage.tests.checkPlaceholderOfSearchInput()
         });
     })
-    context('Navigate to Brakes/Rotor category' , () => {
+    context('Navigate to Brakes/Rotor category', () => {
         it('Verify hovering on brakes nav', () => {
             breakesRotorPage.actions.HoverOnbreaksTab()
             breakesRotorPage.tests.checkHoverOnbreaksTab()
@@ -47,11 +51,16 @@ describe("choose Camaro Vehicle (2016-2022)", () => {
         it('Verify hoveing on Roter choice from CATEGORIES', () => {
             breakesRotorPage.actions.hoverOnRotersFromBreaksTab()
             breakesRotorPage.tests.VerifyHoverOnRotersFromBreaksTab()
-            
+
         });
         it('Verify clicking on Roter choice from CATEGORIES', () => {
             breakesRotorPage.actions.clickOnRotersFromBreaksTab()
             breakesRotorPage.tests.VerifyClickingOnRotersFromBreaksTab()
+        });
+        it('Verify hidden Markiting modal', () => {
+            breakesRotorPage.tests.VerifyMarketingModelVisible()
+            breakesRotorPage.actions.hiddenMarketingModelByClicking()
+            breakesRotorPage.tests.VerifyHiddenMarketingModel()
         });
         it('check breadCrump of Camaro Roter in Camaro Roter page', () => {
             breakesRotorPage.tests.CheckingBreadCrump()
@@ -71,16 +80,14 @@ describe("choose Camaro Vehicle (2016-2022)", () => {
         it('Verify Total number of category equal total item number in Rotor Location filter', () => {
             breakesRotorPage.tests.VerifyTotalNumberOfCategoryEqualTotalItemNumberInRotorTypeFilter()
         });
-        // it('Verify Total number of category equal total item number in Rotor Type filter', () => {
-            
-        // });
-        // it('Verify Total number of category equal total item number in Brand filter', () => {
-            
-        // });
-        // it('Verify Total number of category equal total item in Price filter', () => {
-        // });   
-      
-       
+        it.skip('Verify Total number of category equal total item number in Rotor Type filter', () => {
+
+        });
+        it.skip('Verify Total number of category equal total item number in Brand filter', () => {
+
+        });
+        it.skip('Verify Total number of category equal total item in Price filter', () => {
+        });
         it('Verify adding brake Roter And Drumb Tab Filter', () => {
             breakesRotorPage.tests.VerifybrakeRoterAndDrumbTabFilterVisible()
         });
@@ -90,7 +97,6 @@ describe("choose Camaro Vehicle (2016-2022)", () => {
             breakesRotorPage.actions.TypeInmaxPriceInput()
             breakesRotorPage.tests.VerifyTypingInMaxPrice()
         });
-        
         it('Verify clicking on price filter', () => {
             breakesRotorPage.actions.clickOnGoButton()
             breakesRotorPage.tests.VerifyClickingOnGoButton()
@@ -103,11 +109,7 @@ describe("choose Camaro Vehicle (2016-2022)", () => {
             breakesRotorPage.tests.VerifySelectCustomerRatingSort()
         });
         it.skip('Verify sorting by customer rating', () => {
-            
+
         });
-      
-  
-
-
     })
 })

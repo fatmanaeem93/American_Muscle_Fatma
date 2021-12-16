@@ -2,7 +2,7 @@ export class RotorsPageItems {
     constructor() { }
 
     breaksTab() {
-        return cy.get('a[title="2016-2021 Camaro Brakes"]');
+        return cy.get('[href="/2016-camaro-brakes.html"]');
     }
     browsCategoriesInBrakes() {
         return cy.get('nav > ul > li:nth-child(3) > div')
@@ -70,6 +70,12 @@ export class RotorsPageItems {
     }
     customerRatingSelection(){
         return cy.get('option[value="Customer Rating"]');
+    }
+    marktingModal(){
+        return cy.get('.overlay.marketing_modal')
+    }
+    loading(){
+        return cy.get('div[class="spinner"]')
     }
 
 

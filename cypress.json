@@ -1,3 +1,5 @@
 {
-    "baseUrl":"https://www.americanmuscle.com/"
+    "baseUrl":"https://www.americanmuscle.com/",
+    "numTestsKeptInMemory":1,
+    "hideXHR": true
 }
