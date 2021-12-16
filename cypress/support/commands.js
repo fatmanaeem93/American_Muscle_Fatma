@@ -24,3 +24,10 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-wait-until';
+Cypress.Commands.overwrite("clearCookies", () => {
+    cy.getCookies().then(cookies => {
+        for (const cookie of cookies) {
+            cy.clearCookie(cookie.name)
+        }
+    })
+  })
