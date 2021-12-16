@@ -58,12 +58,12 @@ export class RotorsPageTests {
     VerifybrakeRoterAndDrumbTabFilterVisible() {
         this.items.brakeRoterAndDrumbTabFilter().should("be.visible")
     }
-    VerifyTypingInMinPrice() {
+    VerifyFillingMinPrice() {
         cy.get('@data').then((data) => {
             this.items.minPriceInput().should('have.value', data.minPrice)
         })
     }
-    VerifyTypingInMaxPrice() {
+    VerifyFillingMaxPrice() {
         cy.get('@data').then((data) => {
             this.items.maxPriceInput().should('have.value', data.maxPrice)
         })
@@ -72,6 +72,8 @@ export class RotorsPageTests {
     VerifyClickingOnGoButton() {
         this.items.GoButton().should('have.attr', 'data-facet-id', '$120 - $290').and('have.class', 'limit_price selected')
         cy.url('https://www.americanmuscle.com/2016-camaro-rotors.html/f/?Subcategory=Brake%20Rotors%20and%20Drums&RetailPrice=%24120%20-%20%24290')
+        this.items.loading().should('be.visible')
+        cy.wait(1000)
         this.items.PriceTabFilter().should("be.visible")
     }
     VerifySortSelect() {
@@ -79,12 +81,8 @@ export class RotorsPageTests {
         this.items.featuredSelection().should('have.attr', 'selected')
     }
     VerifySelectCustomerRatingSort() {
-
         cy.url('https://www.americanmuscle.com/2016-camaro-rotors.html/f/?Subcategory=Brake%20Rotors%20and%20Drums&RetailPrice=%24120%20-%20%24290&sort=Customer%20Rating')
-        let url = 'https://k-aus1.contentsquare.net/v2/recording?rt=5&v=11.6.3&pid=10304&uu=a24ee269-794f-ab95-a716-3eed629077c0&sn=13&pn=10&ri=6';
-        cy.intercept('POST', url).as('customerRating');
         this.items.customerRatingSelection().should('have.value', 'Customer Rating').and('have.attr', 'selected')
-        cy.wait('@customerRating');
     }
     // VerifyItemSortedByCustomerRating(){
 

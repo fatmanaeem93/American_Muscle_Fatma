@@ -74,7 +74,7 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
         it('Check the sequence of dates in Camaro Roter page 2016-2022', () => {
             breakesRotorPage.tests.checkTheSequenceOfYear()
         });
-        it('Verify clicking on category filter', () => {
+        it('Verify clicking on brake rotors and drums category filter', () => {
             breakesRotorPage.actions.clickOnBrakeRotorsAndDrumsCategoryFilter()
             breakesRotorPage.tests.VerifyClickingonbrakeRotorsAndDrumsCategoryFilter()
         });
@@ -97,9 +97,9 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
         });
         it('Verify typing value price filter', () => {
             breakesRotorPage.actions.TypeInMinPriceInput()
-            breakesRotorPage.tests.VerifyTypingInMinPrice()
+            breakesRotorPage.tests.VerifyFillingMinPrice()
             breakesRotorPage.actions.TypeInmaxPriceInput()
-            breakesRotorPage.tests.VerifyTypingInMaxPrice()
+            breakesRotorPage.tests.VerifyFillingMaxPrice()
         });
         it('Verify clicking on price filter', () => {
             breakesRotorPage.actions.clickOnGoButton()

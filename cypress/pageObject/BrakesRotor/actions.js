@@ -27,7 +27,7 @@ export class RotorsPageActions {
     }
     TypeInmaxPriceInput(){
         cy.get('@data').then((data)=>{
-            this.items.minPriceInput().type(data.maxPrice)
+            this.items.maxPriceInput().type(data.maxPrice)
            })
     }
     clickOnGoButton(){
