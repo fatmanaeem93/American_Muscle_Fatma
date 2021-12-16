@@ -8,6 +8,10 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
     let breakesRotorPage = new RotorsPage()
     let productPageItems = new ProductPageItems()
     let savedProductAndAddToCartItems = new SavedProductAndAddToCartItems()
+    let product_name=""
+    let fitment=""
+    let price=""
+    let number_of_review=""
     before(() => {
         homePage.actions.visitHomePage()
     });
@@ -130,27 +134,27 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
             productPageItems.numberOfReview().then((el)=>{
                 cy.wrap(el.text()).as('number_of_review')
             })
-            productPageItems.productWithHighestCustomerReview().should('have.attr','data-position','0').click()
+            productPageItems.productWithHighestCustomerReview().should('have.attr','data-position','0').click({timeout:1000})
             cy.url('https://www.americanmuscle.com/power-stop-camaro-evolution-coated-rotor-front-ar82187evc.html')
             
          });
         it('Verify header of product detail match the same clicked product', () => {
-            productPageItems.productNameOfProductPage().should('contain',this.productName)
+            productPageItems.productNameOfProductPage().should('contain',product_name)
         });
         it('Verify fitment of product detail match same clicked product', () => {
-           productPageItems.productFitmentOfProductPage().should('contain',this.fitment)
+           productPageItems.productFitmentOfProductPage().should('contain',fitment)
         });
         it('Verify price of product detail match same clicked product', () => {
-            productPageItems.priceAmountOfProductPage().should('contain',this.price)
+            productPageItems.priceAmountOfProductPage().should('contain',price)
         });
         it('Verify number of review of product detail match same clicked product', () => {
-            productPageItems.numberOfReviewOfProductPage().should('contain',this.number_of_review)
+            productPageItems.numberOfReviewOfProductPage().should('contain',number_of_review)
         });
         it('Verify clicking on save for later button', () => {
             productPageItems.saveForLaterButton().click()
             productPageItems.saveForLaterLoginCard().should('not.have.class','hidden')
         });
-        it('Verify Typing email to save product', () => {
+        it('Verify filling email to save product', () => {
             productPageItems.emailInput()
             .type('fatma@test.com').should("have.value","fatma@test.com")
         });
@@ -164,7 +168,7 @@ describe("Add Camaro Vehicle (2016-2022) to cart with sort", () => {
         it('Verify clicking on saved product choice from my account list', () => {
             productPageItems.myAccount().realHover()
             productPageItems.myAccountMenu().should('have.class','open')
-            productPageItems.prodsavedProductFromMyAccountMenu().click()
+            productPageItems.savedProductFromMyAccountMenu().click()
             cy.get('@data').then((data)=>{
                 cy.url(data.savedForLaterURL)
             })
